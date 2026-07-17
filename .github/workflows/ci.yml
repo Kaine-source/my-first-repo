@@ -23,8 +23,12 @@ jobs:
       - name: Ensure run_tests.sh is executable
         run: |
           if [ -f ./run_tests.sh ]; then chmod +x ./run_tests.sh; fi
+      - name: Normalize line endings
+        run: |
+          if [ -f ./run_tests.sh ]; then sed -i 's/\r$//' run_tests.sh || true; fi
       - name: Run tests
         run: |
+          export PYTHONPATH=.
           if [ -f ./run_tests.sh ]; then ./run_tests.sh; else echo "No tests to run"; fi
       - name: Show Python version
         run: python --version
