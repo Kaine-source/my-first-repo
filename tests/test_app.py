@@ -1,5 +1,4 @@
-﻿import pytest
-from app import add
+﻿from app import add
 
 def test_add_integers():
     assert add(2, 3) == 5
